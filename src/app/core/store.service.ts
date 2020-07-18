@@ -1,10 +1,11 @@
 import { Params } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 
 import { MoviesAdapterService } from './movies-adapter.service';
+import { Movie } from '@core/api.model';
 import { APIResponse } from './api.model';
 
 @Injectable({
@@ -13,20 +14,36 @@ import { APIResponse } from './api.model';
 export class StoreService {
   private readonly apiUrl = 'https://api.themoviedb.org/3/';
   private readonly apiKey = '3a6c2fcb54d6eb1f29237519e40e8089';
+  private favoriteMovies: BehaviorSubject<Movie[]>;
 
+  favoriteMovies$: Observable<APIResponse>;
+  favoriteMovieIds$: Observable<number[]>;
   popularMovies$: Observable<APIResponse>;
 
   constructor(
     private readonly http: HttpClient,
     private readonly adapter: MoviesAdapterService
   ) {
-    this.popularMovies$ = this.get('movie/popular');
+    this.favoriteMovies = new BehaviorSubject([] as Movie[]);
+    this.favoriteMovieIds$ = this.favoriteMovies
+      .asObservable()
+      .pipe(map((movies) => movies.map(({ id }) => id)));
+    this.favoriteMovies$ = this.favoriteMovies
+      .asObservable()
+      .pipe(map((movies) => ({ results: movies })));
+
+    this.popularMovies$ = this.get('movie/popular').pipe(shareReplay(1));
   }
 
   searchMovies$(query: string): Observable<APIResponse> {
     const params: Params[] = [{ query }];
 
     return this.get('search/movie', params);
+  }
+
+  toggleFavorite(movie: Movie): void {
+    const movies = this.favoriteMovies.getValue();
+    this.favoriteMovies.next([...movies, movie]);
   }
 
   private get(

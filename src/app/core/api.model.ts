@@ -19,9 +19,9 @@ export class Movie {
 
 export class APIResponse {
   constructor(
-    public page: number,
-    public totalResults: number,
-    public totalPages: number,
-    public results: Movie[]
+    public results: Movie[],
+    public page?: number,
+    public totalResults?: number,
+    public totalPages?: number
   ) {}
 }

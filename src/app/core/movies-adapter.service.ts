@@ -28,10 +28,10 @@ function toMovie(movie: any): Movie {
 export class MoviesAdapterService implements Adapter<APIResponse> {
   adapt(response: any): APIResponse {
     return new APIResponse(
+      response.results.map(toMovie),
       response.page,
       response.totalResults,
-      response.totalPages,
-      response.results.map(toMovie)
+      response.totalPages
     );
   }
 }

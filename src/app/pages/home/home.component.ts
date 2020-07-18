@@ -10,11 +10,13 @@ import { APIResponse } from '@core/api.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  favoriteMovies$!: Observable<APIResponse>;
   popularMovies$!: Observable<APIResponse>;
 
   constructor(private store: StoreService) {}
 
   ngOnInit(): void {
+    this.favoriteMovies$ = this.store.favoriteMovies$;
     this.popularMovies$ = this.store.popularMovies$;
   }
 }
