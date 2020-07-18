@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SearchComponent } from './pages/search/search.component';
 import { HomeComponent } from './pages/home/home.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     NotFoundComponent,
     SearchComponent,
     HomeComponent,
-    NavigationComponent
+    HeaderComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],

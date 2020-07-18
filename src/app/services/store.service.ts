@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,9 @@ export class StoreService {
   searchMovies(query = ''): Observable<any> {
     const searchUrl = `${this.searchURL}?api_key=${this.apiKey}&query='${query}'`;
 
-    return this.http.get(searchUrl);
+    // return this.http.get(searchUrl);
+    return of({
+      results: []
+    });
   }
 }
