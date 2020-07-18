@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { StoreService } from '@services/store.service';
-import { APIResponse } from '@services/api.model';
+import { StoreService } from '@core/store.service';
+import { APIResponse } from '@core/api.model';
 
 @Component({
   selector: 'app-home',

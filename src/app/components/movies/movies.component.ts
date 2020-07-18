@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { APIResponse } from '@services/api.model';
+import { APIResponse } from '@core/api.model';
 
 @Component({
   selector: 'app-movies',

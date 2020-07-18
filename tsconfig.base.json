@@ -10,8 +10,8 @@
       "@pages/*": [
         "src/app/pages/*"
       ],
-      "@services/*": [
-        "src/app/services/*"
+      "@core/*": [
+        "src/app/core/*"
       ],
     },
     "outDir": "./dist/out-tsc",

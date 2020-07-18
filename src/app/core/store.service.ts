@@ -1,8 +1,9 @@
+import { MoviesAdapterService } from './movies-adapter.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { APIResponse, toAPIResponse } from './api.model';
+import { APIResponse } from './api.model';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -14,7 +15,10 @@ export class StoreService {
 
   popularMovies$: Observable<APIResponse>;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private readonly http: HttpClient,
+    private readonly adapter: MoviesAdapterService
+  ) {
     const popularUrl = `${this.apiUrl}/movie/popular?api_key=${this.apiKey}`;
 
     this.popularMovies$ = this.get(popularUrl);
@@ -27,6 +31,8 @@ export class StoreService {
   }
 
   private get(url: string): Observable<APIResponse> {
-    return this.http.get(url).pipe(map(toAPIResponse));
+    return this.http
+      .get(url)
+      .pipe(map((response: any) => this.adapter.adapt(response)));
   }
 }
