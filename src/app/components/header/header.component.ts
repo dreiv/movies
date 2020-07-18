@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
+  search = new FormGroup({
+    searchInput: new FormControl()
+  });
 
-  constructor() { }
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
+  submit(): void {
+    const query = this.search.get('searchInput')?.value;
+
+    this.router.navigate(['search'], { queryParams: { q: query } });
   }
-
 }

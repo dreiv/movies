@@ -1,16 +1,17 @@
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { SearchComponent } from './pages/search/search.component';
-import { HomeComponent } from './pages/home/home.component';
-import { HeaderComponent } from './components/header/header.component';
-import { MoviesComponent } from './components/movies/movies.component';
-import { MovieComponent } from './pages/movie/movie.component';
-import { MovieCardComponent } from './components/movies/movie-card/movie-card.component';
+import { NotFoundComponent } from '@pages/not-found/not-found.component';
+import { SearchComponent } from '@pages/search/search.component';
+import { HomeComponent } from '@pages/home/home.component';
+import { MovieComponent } from '@pages/movie/movie.component';
+import { HeaderComponent } from '@components/header/header.component';
+import { MoviesComponent } from '@components/movies/movies.component';
+import { MovieCardComponent } from '@components/movies/movie-card/movie-card.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,12 @@ import { MovieCardComponent } from './components/movies/movie-card/movie-card.co
     MovieComponent,
     MovieCardComponent
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

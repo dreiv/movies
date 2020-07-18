@@ -1,14 +1,11 @@
-import { MoviesAdapterService } from './movies-adapter.service';
+import { Params } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-import { APIResponse } from './api.model';
 import { map } from 'rxjs/operators';
 
-interface KeyValue {
-  [key: string]: string;
-}
+import { MoviesAdapterService } from './movies-adapter.service';
+import { APIResponse } from './api.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,23 +23,24 @@ export class StoreService {
     this.popularMovies$ = this.get('movie/popular');
   }
 
-  searchMovies(query: string): Observable<APIResponse> {
-    const params: KeyValue[] = [];
-    if (query) {
-      params.push({ query });
-    }
+  searchMovies$(query: string): Observable<APIResponse> {
+    const params: Params[] = [{ query }];
 
     return this.get('search/movie', params);
   }
 
   private get(
     endpoint: string,
-    queryParams?: KeyValue[]
+    queryParams?: Params[]
   ): Observable<APIResponse> {
-    const params = new HttpParams().set('api_key', this.apiKey);
-    if (queryParams) {
-      queryParams.forEach(({ key, value }) => params.set(key, value));
-    }
+    let params = new HttpParams().set('api_key', this.apiKey);
+    queryParams?.forEach((param) => {
+      const entries = Object.entries(param);
+
+      entries.forEach(([key, value]) => {
+        params = params.set(key.toString(), value.toString());
+      });
+    });
 
     return this.http
       .get(`${this.apiUrl}${endpoint}`, { params })
