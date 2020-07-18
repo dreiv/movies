@@ -1,5 +1,4 @@
-<ul *ngIf="movies$ | async as movies">
-  <li *ngFor="let movie of movies.results">
-    {{ movie | json }}
-  </li>
-</ul>
+<h2>My Favorite movies</h2>
+
+<h2>Trending movies</h2>
+<app-movies [movies$]="movies$"></app-movies>

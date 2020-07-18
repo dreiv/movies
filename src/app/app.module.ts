@@ -8,6 +8,9 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SearchComponent } from './pages/search/search.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
+import { MoviesComponent } from './components/movies/movies.component';
+import { MovieComponent } from './pages/movie/movie.component';
+import { MovieCardComponent } from './components/movies/movie-card/movie-card.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { HeaderComponent } from './components/header/header.component';
     NotFoundComponent,
     SearchComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    MoviesComponent,
+    MovieComponent,
+    MovieCardComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],

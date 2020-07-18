@@ -14,9 +14,9 @@ export class StoreService {
   searchMovies(query = ''): Observable<any> {
     const searchUrl = `${this.searchURL}?api_key=${this.apiKey}&query='${query}'`;
 
-    // return this.http.get(searchUrl);
-    return of({
-      results: []
-    });
+    return this.http.get(searchUrl);
+    // return of({
+    //   results: []
+    // });
   }
 }
