@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { StoreService } from '../../services/store.service';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+
+import { StoreService } from '@services/store.service';
+import { APIResponse } from '@services/api.model';
 
 @Component({
   selector: 'app-home',
@@ -9,11 +10,11 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  movies$!: Observable<any>;
+  popularMovies$!: Observable<APIResponse>;
 
   constructor(private store: StoreService) {}
 
   ngOnInit(): void {
-    this.movies$ = this.store.searchMovies().pipe(tap(console.log));
+    this.popularMovies$ = this.store.popularMovies$;
   }
 }

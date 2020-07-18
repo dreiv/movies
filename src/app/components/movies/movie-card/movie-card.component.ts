@@ -1,12 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { Movie } from '@services/api.model';
+
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent implements OnInit {
-  @Input() movie: any;
+  @Input() movie!: Movie;
 
   constructor() {}
 
