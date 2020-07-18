@@ -17,7 +17,6 @@ export class StoreService {
   private favoriteMovies: BehaviorSubject<Movie[]>;
 
   favoriteMovies$: Observable<APIResponse>;
-  favoriteMovieIds$: Observable<number[]>;
   popularMovies$: Observable<APIResponse>;
 
   constructor(
@@ -25,9 +24,6 @@ export class StoreService {
     private readonly adapter: MoviesAdapterService
   ) {
     this.favoriteMovies = new BehaviorSubject([] as Movie[]);
-    this.favoriteMovieIds$ = this.favoriteMovies
-      .asObservable()
-      .pipe(map((movies) => movies.map(({ id }) => id)));
     this.favoriteMovies$ = this.favoriteMovies
       .asObservable()
       .pipe(map((movies) => ({ results: movies })));
@@ -41,9 +37,19 @@ export class StoreService {
     return this.get('search/movie', params);
   }
 
-  toggleFavorite(movie: Movie): void {
-    const movies = this.favoriteMovies.getValue();
-    this.favoriteMovies.next([...movies, movie]);
+  toggleFavorite(movie: Movie, isFavorite: boolean): void {
+    const movies = [...this.favoriteMovies.getValue()];
+
+    if (isFavorite) {
+      const movieIndex = movies.findIndex(({ id }) => id === movie.id);
+      movies.splice(movieIndex, 1);
+
+      this.favoriteMovies.next(movies);
+    } else {
+      movies.push(movie);
+
+      this.favoriteMovies.next(movies);
+    }
   }
 
   private get(

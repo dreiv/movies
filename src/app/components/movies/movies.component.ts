@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { APIResponse } from '@core/api.model';
+import { APIResponse, Movie } from '@core/api.model';
 
 @Component({
   selector: 'app-movies',
@@ -14,4 +14,8 @@ export class MoviesComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  trackByFn(index: number, item: Movie): number {
+    return item.id;
+  }
 }
