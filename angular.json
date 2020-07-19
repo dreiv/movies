@@ -26,15 +26,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              {
-                "glob": "*.svg",
-                "input": "./node_modules/bootstrap-icons/",
-                "output": "/"
-              }
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles/main.scss",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css"
@@ -99,15 +91,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              {
-                "glob": "*.svg",
-                "input": "./node_modules/bootstrap-icons/",
-                "output": "/"
-              }
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles/main.scss",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css"
