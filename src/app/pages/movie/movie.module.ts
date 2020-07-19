@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { MovieRoutingModule } from './movie-routing.module';
 import { MovieComponent } from './movie.component';
-import { FavoriteButtonModule } from '@components/favorite-button/favorite-button.module';
+import { SharedModule } from '@components/shared/shared.module';
 
 @NgModule({
   declarations: [MovieComponent],
-  imports: [CommonModule, MovieRoutingModule, FavoriteButtonModule]
+  imports: [CommonModule, MovieRoutingModule, SharedModule]
 })
 export class MovieModule {}
