@@ -3,7 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Subject, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { StoreService } from '@core/store.service';
+import { StoreService } from '@core/store/store.service';
 import { APIResponse } from '@core/api.model';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { Adapter } from './adapter';
-import { APIResponse, Movie } from './api.model';
+import { Adapter } from '../adapter';
+import { APIResponse, Movie } from '../api.model';
 
 function toMovie(movie: any): Movie {
   return new Movie(

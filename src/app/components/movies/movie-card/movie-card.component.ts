@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { StoreService } from '@core/store.service';
+import { StoreService } from '@core/store/store.service';
 import { Movie } from '@core/api.model';
 
 @Component({

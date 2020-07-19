@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { StoreService } from '@core/store.service';
+import { StoreService } from '@core/store/store.service';
 import { APIResponse } from '@core/api.model';
 
 @Component({

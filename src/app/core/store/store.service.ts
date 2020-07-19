@@ -4,10 +4,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, BehaviorSubject, fromEvent, Subject } from 'rxjs';
 import { map, shareReplay, takeUntil } from 'rxjs/operators';
 
-import { MoviesAdapterService } from './movies-adapter.service';
-import { StorageService } from './storage.service';
+import { MoviesAdapterService } from '../movies-adapter/movies-adapter.service';
+import { StorageService } from '../storage/storage.service';
 import { Movie } from '@core/api.model';
-import { APIResponse } from './api.model';
+import { APIResponse } from '../api.model';
 
 const FAVORITES = 'favorites';
 
