@@ -1,19 +1,24 @@
 <div class="card h-100">
-  <a routerLink="/movie/{{ movie.id }}">
-    <img
-      src="https://image.tmdb.org/t/p/w500{{ movie.posterPath }}"
-      class="card-img-top"
-      alt="{{ movie.title }}"
-    />
-  </a>
-  <div class="card-body">
-    <h5 class="card-title">{{ movie.title }}</h5>
-    <button
-      *ngIf="{ value: isFavorite$ | async } as isFavorite"
-      class="btn btn-primary"
-      (click)="toggleFavorite(!!isFavorite.value)"
-    >
-      {{ isFavorite.value ? 'Remove from' : 'Add to' }} Favorites
-    </button>
+  <div class="row g-0">
+    <a class="col-md-5 img-wrapper" routerLink="/movie/{{ movie.id }}">
+      <img
+        src="https://image.tmdb.org/t/p/w400{{ movie.posterPath }}"
+        class="card-img"
+        alt="{{ movie.title }}"
+      />
+    </a>
+    <div class="col-md-7">
+      <div class="card-body">
+        <h4 class="card-title">{{ movie.title }}</h4>
+        <p class="card-text description text-secondary">{{ movie.overview }}</p>
+        <button
+          *ngIf="{ value: isFavorite$ | async } as isFavorite"
+          class="btn btn-dark favorite-btn"
+          (click)="toggleFavorite(!!isFavorite.value)"
+        >
+          {{ isFavorite.value ? 'Remove from' : 'Add to' }} Favorites
+        </button>
+      </div>
+    </div>
   </div>
 </div>
