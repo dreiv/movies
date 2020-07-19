@@ -12,6 +12,7 @@ import { Movie } from '@core/api.model';
 })
 export class FavoriteButtonComponent implements OnInit {
   @Input() movie!: Movie;
+  @Input() classes = '';
   @Input() private isFavorite?: boolean;
   isFavorite$!: Observable<boolean>;
 

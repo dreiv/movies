@@ -9,7 +9,7 @@
   <h1 class="display-1">
     {{ movie.title }}
   </h1>
-  <div>
+  <div class="mb-2">
     <span class="badge badge-secondary">{{ movie.releaseDate }}</span>
     <span class="ml-2 badge badge-secondary">{{ movie.vote }}</span>
   </div>
@@ -25,7 +25,5 @@
     {{ movie.overview }}
   </p>
 
-  <button class="btn btn-dark">
-    Favorites
-  </button>
+  <app-favorite-button [movie]="favMovie"></app-favorite-button>
 </ng-container>

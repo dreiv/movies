@@ -1,6 +1,7 @@
 <button
   *ngIf="{ value: isFavorite$ | async } as isFavorite"
   class="btn btn-dark favorite-btn"
+  [ngClass]="classes"
   (click)="toggleFavorite($event, !!isFavorite.value)"
 >
   {{ isFavorite.value ? 'Remove from' : 'Add to' }} Favorites
