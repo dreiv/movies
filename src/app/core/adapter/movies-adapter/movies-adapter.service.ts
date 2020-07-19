@@ -1,8 +1,17 @@
 import { Injectable } from '@angular/core';
 
 import { Adapter } from '../adapter';
-import { toMovie } from '../utils';
-import { APIResponse } from '@core/api.model';
+import { APIResponse, Movie } from '@core/api.model';
+
+export function toMovie(item: any): Movie {
+  return new Movie(
+    item.id,
+    item.vote_average,
+    item.title,
+    item.overview,
+    item.poster_path
+  );
+}
 
 @Injectable({
   providedIn: 'root'

@@ -44,7 +44,8 @@ function toMovieDetail(item: any): MovieDetail {
     getGenre(item.genres),
     getStars(item.credits),
     item.backdrop_path,
-    item.overview
+    item.overview,
+    item.poster_path
   );
 }
 
