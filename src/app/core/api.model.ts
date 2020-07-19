@@ -17,18 +17,16 @@ export class Movie {
   ) {}
 }
 
-export class Genre {
-  constructor(public id: number, public name: string) {}
-}
-
 export class MovieDetail {
   constructor(
     public id: number,
     public vote: number,
     public title: string,
     public tagline: string,
+    public runtime: string,
     public releaseDate: string,
-    public genres: Genre[],
+    public genres: string,
+    public stars: string,
     public backdropPath: string,
     public overview: string
   ) {}

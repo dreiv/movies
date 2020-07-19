@@ -1,10 +1,36 @@
 import { Injectable } from '@angular/core';
 
-import { MovieDetail, Genre } from '@core/api.model';
+import { MovieDetail } from '@core/api.model';
 import { Adapter } from './../adapter';
 
-function toGenre(item: any): Genre {
-  return new Genre(item.id, item.name);
+function getGenre(item: any[]): string {
+  return item.map((item: any) => item.name).join(' • ');
+}
+
+function getRuntime(item: any): string {
+  let result = '';
+  const hours = Math.floor(item / 60);
+  const minutes = item % 60;
+
+  if (hours) {
+    result += `${hours}h `;
+  }
+  return result + `${minutes}mins `;
+}
+
+function getStars(item: any): string {
+  const cast = item.cast;
+  const hasOthers = cast.length > 5;
+
+  let stars = cast
+    .slice(0, 5)
+    .map((person: any) => person.name)
+    .join(' , ');
+  if (hasOthers) {
+    stars += ' and others';
+  }
+
+  return stars;
 }
 
 function toMovieDetail(item: any): MovieDetail {
@@ -13,8 +39,10 @@ function toMovieDetail(item: any): MovieDetail {
     item.vote_average,
     item.title,
     item.tagline,
-    item.release_date,
-    item.genres.map(toGenre),
+    getRuntime(item.runtime),
+    item.release_date.split('-')[0],
+    getGenre(item.genres),
+    getStars(item.credits),
     item.backdrop_path,
     item.overview
   );

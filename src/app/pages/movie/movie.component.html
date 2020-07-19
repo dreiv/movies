@@ -9,15 +9,23 @@
   <h1 class="display-1">
     {{ movie.title }}
   </h1>
-  <h2 class="text-secondary">{{ movie.tagline }}</h2>
-  <h3>
+  <div>
     <span class="badge badge-secondary">{{ movie.releaseDate }}</span>
     <span class="ml-2 badge badge-secondary">{{ movie.vote }}</span>
-  </h3>
+  </div>
+  <h2 class="text-secondary">{{ movie.tagline }}</h2>
+  <h5 class="text-secondary">{{ movie.genres }}</h5>
+  <h5 class="text-secondary">{{ movie.runtime }}</h5>
+  <h3>Stars</h3>
+  <p class="lead">
+    {{ movie.stars }}
+  </p>
   <h3>Overview</h3>
   <p class="lead">
     {{ movie.overview }}
   </p>
 
-  {{ movie | json }}
+  <button class="btn btn-dark">
+    Favorites
+  </button>
 </ng-container>
