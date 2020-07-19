@@ -1,0 +1,17 @@
+@import 'abstracts/mixins';
+
+.img-wrapper {
+  position: relative;
+  z-index: -1;
+
+  &::after {
+    @include absolute(0, 0);
+    background: linear-gradient(transparent, transparent 70%, white);
+
+    content: '';
+  }
+}
+
+h1 {
+  margin-top: -2rem;
+}
