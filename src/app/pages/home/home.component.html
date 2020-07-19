@@ -1,5 +1,7 @@
-<h2>My Favorite movies</h2>
-<app-movies [movies$]="favoriteMovies$"></app-movies>
+<ng-container *ngIf="favoriteMovies$ | async as favoriteMovies">
+  <h2 class="my-2">My Favorite movies</h2>
+  <app-favorites [movies]="favoriteMovies"></app-favorites>
+</ng-container>
 
-<h2>Popular movies</h2>
+<h2 class="my-2">Popular movies</h2>
 <app-movies [movies$]="popularMovies$"></app-movies>

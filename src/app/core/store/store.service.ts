@@ -21,7 +21,7 @@ export class StoreService implements OnDestroy {
   private favoriteMovies: BehaviorSubject<Movie[]>;
   private unsubscribe$: Subject<void>;
 
-  favoriteMovies$: Observable<APIResponse>;
+  favoriteMovies$: Observable<Movie[]>;
   popularMovies$: Observable<APIResponse>;
 
   constructor(
@@ -35,9 +35,7 @@ export class StoreService implements OnDestroy {
     this.favoriteMovies = new BehaviorSubject(
       storage.getItem(FAVORITES) || ([] as Movie[])
     );
-    this.favoriteMovies$ = this.favoriteMovies
-      .asObservable()
-      .pipe(map((movies) => ({ results: movies })));
+    this.favoriteMovies$ = this.favoriteMovies.asObservable();
 
     this.popularMovies$ = this.get('movie/popular', this.adapter).pipe(
       shareReplay(1)

@@ -18,7 +18,7 @@ export class MovieCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.isFavorite$ = this.store.favoriteMovies$.pipe(
-      map(({ results }) => results.some(({ id }) => id === this.movie.id))
+      map((movies) => movies.some(({ id }) => id === this.movie.id))
     );
   }
 
