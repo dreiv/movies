@@ -1,11 +1,15 @@
 <a class="card h-100 text-dark" routerLink="/movie/{{ movie.id }}">
   <div class="row g-0">
     <div class="col-md-5 img-wrapper">
-      <img
-        src="https://image.tmdb.org/t/p/w342{{ movie.posterPath }}"
-        class="card-img rounded"
-        alt="{{ movie.title }}"
-      />
+      <div class="two-three">
+        <div class="content rounded">
+          <img
+            src="https://image.tmdb.org/t/p/w342{{ movie.posterPath }}"
+            class="card-img rounded w-100"
+            alt="{{ movie.title }}"
+          />
+        </div>
+      </div>
     </div>
 
     <div class="col-md-7">

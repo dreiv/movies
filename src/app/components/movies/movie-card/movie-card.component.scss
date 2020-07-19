@@ -37,3 +37,11 @@
     align-self: flex-end;
   }
 }
+
+.two-three {
+  @include aspect-ratio(2, 3);
+
+  > .content {
+    background-color: var(--bs-gray);
+  }
+}

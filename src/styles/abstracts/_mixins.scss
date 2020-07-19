@@ -45,8 +45,8 @@
 
 @mixin position(
   $position,
-  $top: null,
-  $right: null,
+  $top: 0,
+  $right: $top,
   $bottom: $top,
   $left: $right
 ) {
@@ -67,4 +67,22 @@
 
 @mixin fixed($args...) {
   @include position(fixed, $args...);
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+
+    content: '';
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 }

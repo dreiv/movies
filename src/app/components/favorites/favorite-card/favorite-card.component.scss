@@ -16,3 +16,11 @@
   @include trim;
   flex: 1;
 }
+
+.two-three {
+  @include aspect-ratio(2, 3);
+
+  > .content {
+    background-color: var(--bs-gray);
+  }
+}
