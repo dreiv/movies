@@ -12,13 +12,7 @@
       <div class="card-body">
         <h4 class="card-title">{{ movie.title }}</h4>
         <p class="card-text description text-secondary">{{ movie.overview }}</p>
-        <button
-          *ngIf="{ value: isFavorite$ | async } as isFavorite"
-          class="btn btn-dark favorite-btn"
-          (click)="toggleFavorite($event, !!isFavorite.value)"
-        >
-          {{ isFavorite.value ? 'Remove from' : 'Add to' }} Favorites
-        </button>
+        <app-favorite-button [movie]="movie"></app-favorite-button>
       </div>
     </div>
   </div>

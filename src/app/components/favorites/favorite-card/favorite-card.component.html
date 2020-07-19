@@ -6,8 +6,9 @@
   />
   <div class="card-body">
     <h5 class="card-title">{{ movie.title }}</h5>
-    <button class="btn btn-dark w-100" (click)="removeFavorite($event)">
-      Remove from Favorites
-    </button>
+    <app-favorite-button
+      [movie]="movie"
+      [isFavorite]="true"
+    ></app-favorite-button>
   </div>
 </a>
