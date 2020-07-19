@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-import { HomeComponent } from '@pages/home/home.component';
-import { SearchComponent } from '@pages/search/search.component';
-import { NotFoundComponent } from '@pages/not-found/not-found.component';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: HomeComponent
+    loadChildren: () =>
+      import('./pages/home/home.module').then((m) => m.HomeModule)
   },
   {
     path: 'search',
-    component: SearchComponent
+    loadChildren: () =>
+      import('./pages/search/search.module').then((m) => m.SearchModule)
   },
   {
     path: 'movie',
@@ -22,12 +20,15 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: NotFoundComponent
+    loadChildren: () =>
+      import('./pages/not-found/not-found.module').then((m) => m.NotFoundModule)
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
