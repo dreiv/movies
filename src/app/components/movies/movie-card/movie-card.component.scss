@@ -1,5 +1,16 @@
 @import 'abstracts/mixins';
 
+.card {
+  text-decoration: none;
+  color: reset;
+
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: #343a40;
+  }
+}
+
 .img-wrapper {
   padding: 1rem;
 
@@ -11,7 +22,11 @@
 .card-body {
   @include flex-column;
   height: 100%;
-  max-height: 24rem;
+
+  // TODO: import breakpoint from bootstrap
+  @media (min-width: 992px) {
+    max-height: 22rem;
+  }
 
   > .description {
     flex: 1;

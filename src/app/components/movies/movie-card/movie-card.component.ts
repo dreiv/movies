@@ -22,7 +22,10 @@ export class MovieCardComponent implements OnInit {
     );
   }
 
-  toggleFavorite(isFavorite: boolean): void {
+  toggleFavorite(event: MouseEvent, isFavorite: boolean): void {
+    event.stopPropagation();
+    event.preventDefault();
+
     this.store.toggleFavorite(this.movie, isFavorite);
   }
 }
