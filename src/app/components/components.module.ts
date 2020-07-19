@@ -1,21 +1,21 @@
+import { FavoritesModule } from './favorites/favorites.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MovieCardComponent } from './movies/movie-card/movie-card.component';
-import { MoviesComponent } from './movies/movies.component';
+import { MoviesModule } from './movies/movies.module';
 import { HeaderComponent } from './header/header.component';
-import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    MoviesComponent,
-    MovieCardComponent,
-    FavoritesComponent
+  declarations: [HeaderComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    MoviesModule,
+    FavoritesModule
   ],
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
-  exports: [HeaderComponent, MoviesComponent, FavoritesComponent]
+  exports: [MoviesModule, FavoritesModule, HeaderComponent]
 })
 export class ComponentsModule {}

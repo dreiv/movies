@@ -25,7 +25,11 @@
 
   // TODO: import breakpoint from bootstrap
   @media (min-width: 992px) {
-    max-height: 22rem;
+    max-height: 20rem;
+  }
+
+  @media (min-width: 1200px) {
+    max-height: 24rem;
   }
 
   > .description {

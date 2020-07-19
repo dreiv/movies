@@ -66,7 +66,7 @@ export class StoreService implements OnDestroy {
 
       this.favoriteMovies.next(movies);
     } else {
-      movies.push(movie);
+      movies.unshift(movie);
 
       this.favoriteMovies.next(movies);
     }

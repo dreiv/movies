@@ -1,0 +1,10 @@
+.row {
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+
+.fill {
+  flex: 99;
+  min-width: 0;
+  padding: 0;
+}
