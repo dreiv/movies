@@ -6,8 +6,18 @@
       alt="{{ movie.title }}"
     />
   </div>
-  <h1 class="display-1">{{ movie.title }}</h1>
+  <h1 class="display-1">
+    {{ movie.title }}
+  </h1>
+  <h2 class="text-secondary">{{ movie.tagline }}</h2>
+  <h3>
+    <span class="badge badge-secondary">{{ movie.releaseDate }}</span>
+    <span class="ml-2 badge badge-secondary">{{ movie.vote }}</span>
+  </h3>
+  <h3>Overview</h3>
   <p class="lead">
     {{ movie.overview }}
   </p>
+
+  {{ movie | json }}
 </ng-container>

@@ -1,3 +1,4 @@
+import { MovieDetail } from './../api.model';
 import { Params } from '@angular/router';
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -53,8 +54,10 @@ export class StoreService implements OnDestroy {
     return this.get('search/movie', this.adapter, params);
   }
 
-  getMovie$(id: number): Observable<Movie> {
-    return this.get(`movie/${id}`, this.detailadapter);
+  getMovie$(id: number): Observable<MovieDetail> {
+    const params: Params[] = [{ append_to_response: 'credits' }];
+
+    return this.get(`movie/${id}`, this.detailadapter, params);
   }
 
   toggleFavorite(movie: Movie, isFavorite: boolean): void {

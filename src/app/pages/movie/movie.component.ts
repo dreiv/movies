@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { Movie } from '@core/api.model';
+import { MovieDetail } from '@core/api.model';
 import { StoreService } from '@core/store/store.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { StoreService } from '@core/store/store.service';
   styleUrls: ['./movie.component.scss']
 })
 export class MovieComponent implements OnInit {
-  movie$!: Observable<Movie>;
+  movie$!: Observable<MovieDetail>;
 
   constructor(private store: StoreService, private route: ActivatedRoute) {}
 

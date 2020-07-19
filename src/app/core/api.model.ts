@@ -17,6 +17,23 @@ export class Movie {
   ) {}
 }
 
+export class Genre {
+  constructor(public id: number, public name: string) {}
+}
+
+export class MovieDetail {
+  constructor(
+    public id: number,
+    public vote: number,
+    public title: string,
+    public tagline: string,
+    public releaseDate: string,
+    public genres: Genre[],
+    public backdropPath: string,
+    public overview: string
+  ) {}
+}
+
 export class APIResponse {
   constructor(
     public results: Movie[],
