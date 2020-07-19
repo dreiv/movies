@@ -2,6 +2,14 @@
 
 .card {
   width: 14rem;
+  text-decoration: none;
+  color: reset;
+
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: #343a40;
+  }
 }
 
 .card-title {

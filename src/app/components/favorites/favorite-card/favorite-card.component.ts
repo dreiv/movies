@@ -13,7 +13,10 @@ export class FavoriteCardComponent {
 
   constructor(private store: StoreService) {}
 
-  removeFavorite(): void {
+  removeFavorite(event: MouseEvent): void {
+    event.stopPropagation();
+    event.preventDefault();
+
     this.store.toggleFavorite(this.movie, true);
   }
 }
