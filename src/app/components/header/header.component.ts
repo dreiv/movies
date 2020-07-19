@@ -16,6 +16,9 @@ export class HeaderComponent {
 
   submit(): void {
     const query = this.search.get('searchInput')?.value;
+    if (!query) {
+      return;
+    }
 
     this.router.navigate(['search'], { queryParams: { q: query } });
   }

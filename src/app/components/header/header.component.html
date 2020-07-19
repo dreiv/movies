@@ -1,45 +1,34 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
   <div class="container-xl">
     <a routerLink="/" class="navbar-brand d-flex align-items-center">
-      <ng-container *ngTemplateOutlet="movieSVG"></ng-container>
-      <strong>Movies</strong>
+      <ng-container *ngTemplateOutlet="movie"></ng-container>
+      <strong class="d-none d-md-inline">Movies</strong>
     </a>
 
-    <button
-      class="navbar-toggler collapsed"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarToggle"
-      aria-controls="navbarToggle"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
+    <form
+      class="d-flex ml-auto my-2 my-lg-0"
+      [formGroup]="search"
+      (submit)="submit()"
     >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <input
+        formControlName="searchInput"
+        class="form-control mr-2"
+        type="search"
+        placeholder="Search Movie..."
+        aria-label="Search"
+      />
 
-    <div class="navbar-collapse collapse" id="navbarToggle">
-      <form
-        class="d-flex ml-auto my-2 my-lg-0"
-        [formGroup]="search"
-        (submit)="submit()"
+      <button
+        class="btn btn-outline-light d-none d-md-inline-block"
+        type="submit"
       >
-        <input
-          formControlName="searchInput"
-          class="form-control mr-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-
-        <button class="btn btn-outline-light" type="submit">
-          Search
-        </button>
-      </form>
-    </div>
+        Search
+      </button>
+    </form>
   </div>
 </nav>
 
-<ng-template #movieSVG>
+<ng-template #movie>
   <svg
     class="mr-1"
     xmlns="http://www.w3.org/2000/svg"
