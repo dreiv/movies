@@ -34,9 +34,10 @@
 </ng-container>
 
 <section [ngSwitch]="movie$.status | async">
-  <div *ngSwitchCase="Status.LOADING" role="status">
-    <span class="sr-only">Loading Movie...</span>
-  </div>
+  <app-loader
+    *ngSwitchCase="Status.LOADING"
+    text="Loading Movie..."
+  ></app-loader>
   <span class="text-warning" role="status" *ngSwitchCase="Status.ERROR"
     >There was an error loading the movie.</span
   >
