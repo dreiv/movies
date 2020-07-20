@@ -1,6 +1,7 @@
 import { CachingInterceptor } from './core/caching/interceptor.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { ToMoviePipe } from './pages/movie/to-movie.pipe';
   imports: [
     ComponentsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     ComponentsModule,
