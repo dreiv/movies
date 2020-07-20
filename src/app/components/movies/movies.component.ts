@@ -1,19 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Input } from '@angular/core';
 
-import { APIMoviesResponse, Movie } from '@core/api.model';
+import { APIMoviesResponse, Movie, Pending, Status } from '@core/api.model';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss']
 })
-export class MoviesComponent implements OnInit {
-  @Input() movies$!: Observable<APIMoviesResponse>;
-
-  constructor() {}
-
-  ngOnInit(): void {}
+export class MoviesComponent {
+  readonly Status = Status;
+  @Input() movies$!: Pending<APIMoviesResponse>;
 
   trackByFn(index: number, item: Movie): number {
     return item.id;

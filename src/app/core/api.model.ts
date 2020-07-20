@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+
 export class Movie {
   constructor(
     public id: number,
@@ -31,4 +33,15 @@ export class APIMoviesResponse {
     public totalResults?: number,
     public totalPages?: number
   ) {}
+}
+
+export interface Pending<T> {
+  data: Observable<T>;
+  status: Observable<Status>;
+}
+
+export enum Status {
+  LOADING = 'LOADING',
+  SUCCESS = 'SUCCESS',
+  ERROR = 'ERROR'
 }

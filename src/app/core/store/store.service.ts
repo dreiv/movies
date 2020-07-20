@@ -1,8 +1,16 @@
+import { Pending, Status } from './../api.model';
 import { Params } from '@angular/router';
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, BehaviorSubject, fromEvent, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import {
+  Observable,
+  BehaviorSubject,
+  fromEvent,
+  Subject,
+  ReplaySubject,
+  defer
+} from 'rxjs';
+import { map, takeUntil, catchError, tap } from 'rxjs/operators';
 
 import { Adapter } from '@core/adapter/adapter';
 import { MovieDetailAdapterService } from '@core/adapter/movie-detail-adapter/movie-detail-adapter.service';
@@ -22,7 +30,7 @@ export class StoreService implements OnDestroy {
   private unsubscribe$: Subject<void>;
 
   favoriteMovies$: Observable<Movie[]>;
-  popularMovies$: Observable<APIMoviesResponse>;
+  popularMovies$: Pending<APIMoviesResponse>;
 
   constructor(
     private readonly http: HttpClient,
@@ -45,13 +53,13 @@ export class StoreService implements OnDestroy {
     this.unsubscribe$.next();
   }
 
-  searchMovies$(query: string): Observable<APIMoviesResponse> {
+  searchMovies$(query: string): Pending<APIMoviesResponse> {
     const params: Params[] = [{ query }];
 
     return this.get('search/movie', this.adapter, params);
   }
 
-  getMovie$(id: number): Observable<MovieDetail> {
+  getMovie$(id: number): Pending<MovieDetail> {
     const params: Params[] = [{ append_to_response: 'credits' }];
 
     return this.get(`movie/${id}`, this.detailadapter, params);
@@ -74,7 +82,9 @@ export class StoreService implements OnDestroy {
     endpoint: string,
     adapter: Adapter<T>,
     queryParams?: Params[]
-  ): Observable<T> {
+  ): Pending<T> {
+    const status = new ReplaySubject<Status>(1);
+
     let params = new HttpParams().set('api_key', this.apiKey);
     queryParams?.forEach((parameter) => {
       Object.entries(parameter).forEach(([key, value]) => {
@@ -82,9 +92,23 @@ export class StoreService implements OnDestroy {
       });
     });
 
-    return this.http
-      .get(`${this.apiUrl}${endpoint}`, { params })
-      .pipe(map((response) => adapter.adapt(response)));
+    const request = this.http.get(`${this.apiUrl}${endpoint}`, { params }).pipe(
+      map((response) => adapter.adapt(response)),
+      catchError((error) => {
+        status.next(Status.ERROR);
+
+        throw error;
+      }),
+      tap(() => status.next(Status.SUCCESS))
+    );
+
+    const data = defer(() => {
+      status.next(Status.LOADING);
+
+      return request;
+    });
+
+    return { data, status };
   }
 
   private unloadStrategy(): void {

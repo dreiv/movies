@@ -1,4 +1,4 @@
-<ng-container *ngIf="movie$ | async as movie">
+<ng-container *ngIf="movie$.data | async as movie">
   <div class="sixteen-nine">
     <div class="content rounded">
       <img
@@ -30,5 +30,14 @@
     {{ movie.overview }}
   </p>
 
-  <app-favorite-button [movie]="favMovie"></app-favorite-button>
+  <app-favorite-button [movie]="movie | toMovie"></app-favorite-button>
 </ng-container>
+
+<section [ngSwitch]="movie$.status | async">
+  <div *ngSwitchCase="Status.LOADING" role="status">
+    <span class="sr-only">Loading Movie...</span>
+  </div>
+  <span class="text-warning" role="status" *ngSwitchCase="Status.ERROR"
+    >There was an error loading the movie.</span
+  >
+</section>

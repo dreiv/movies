@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Subject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { StoreService } from '@core/store/store.service';
-import { APIMoviesResponse } from '@core/api.model';
+import { APIMoviesResponse, Pending } from '@core/api.model';
 
 @Component({
   selector: 'app-search',
@@ -13,7 +13,7 @@ import { APIMoviesResponse } from '@core/api.model';
 })
 export class SearchComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void>;
-  movies$!: Observable<APIMoviesResponse>;
+  movies$!: Pending<APIMoviesResponse>;
   query!: string;
 
   constructor(
