@@ -24,7 +24,7 @@ export class MovieDetail {
   ) {}
 }
 
-export class APIResponse {
+export class APIMoviesResponse {
   constructor(
     public results: Movie[],
     public page?: number,

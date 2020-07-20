@@ -1,4 +1,3 @@
-import { MovieDetail } from './../api.model';
 import { Params } from '@angular/router';
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -9,7 +8,7 @@ import { Adapter } from '@core/adapter/adapter';
 import { MovieDetailAdapterService } from '@core/adapter/movie-detail-adapter/movie-detail-adapter.service';
 import { MoviesAdapterService } from '@core/adapter/movies-adapter/movies-adapter.service';
 import { StorageService } from '../storage/storage.service';
-import { APIResponse, Movie } from '../api.model';
+import { APIMoviesResponse, Movie, MovieDetail } from '../api.model';
 
 const FAVORITES = 'favorites';
 
@@ -23,7 +22,7 @@ export class StoreService implements OnDestroy {
   private unsubscribe$: Subject<void>;
 
   favoriteMovies$: Observable<Movie[]>;
-  popularMovies$: Observable<APIResponse>;
+  popularMovies$: Observable<APIMoviesResponse>;
 
   constructor(
     private readonly http: HttpClient,
@@ -37,10 +36,10 @@ export class StoreService implements OnDestroy {
       storage.getItem(FAVORITES) || ([] as Movie[])
     );
     this.favoriteMovies$ = this.favoriteMovies.asObservable();
-
     this.popularMovies$ = this.get('movie/popular', this.adapter).pipe(
       shareReplay(1)
     );
+
     this.unloadStrategy();
   }
 
@@ -48,7 +47,7 @@ export class StoreService implements OnDestroy {
     this.unsubscribe$.next();
   }
 
-  searchMovies$(query: string): Observable<APIResponse> {
+  searchMovies$(query: string): Observable<APIMoviesResponse> {
     const params: Params[] = [{ query }];
 
     return this.get('search/movie', this.adapter, params);
@@ -66,13 +65,11 @@ export class StoreService implements OnDestroy {
     if (isFavorite) {
       const movieIndex = movies.findIndex(({ id }) => id === movie.id);
       movies.splice(movieIndex, 1);
-
-      this.favoriteMovies.next(movies);
     } else {
       movies.unshift(movie);
-
-      this.favoriteMovies.next(movies);
     }
+
+    this.favoriteMovies.next(movies);
   }
 
   private get<T>(
@@ -81,10 +78,8 @@ export class StoreService implements OnDestroy {
     queryParams?: Params[]
   ): Observable<T> {
     let params = new HttpParams().set('api_key', this.apiKey);
-    queryParams?.forEach((param) => {
-      const entries = Object.entries(param);
-
-      entries.forEach(([key, value]) => {
+    queryParams?.forEach((parameter) => {
+      Object.entries(parameter).forEach(([key, value]) => {
         params = params.set(key.toString(), value.toString());
       });
     });

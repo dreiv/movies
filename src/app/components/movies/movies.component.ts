@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { APIResponse, Movie } from '@core/api.model';
+import { APIMoviesResponse, Movie } from '@core/api.model';
 
 @Component({
   selector: 'app-movies',
@@ -9,7 +9,7 @@ import { APIResponse, Movie } from '@core/api.model';
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
-  @Input() movies$!: Observable<APIResponse>;
+  @Input() movies$!: Observable<APIMoviesResponse>;
 
   constructor() {}
 

@@ -10,7 +10,7 @@
 
   &::after {
     @include absolute;
-    background: linear-gradient(transparent, transparent 70%, white);
+    background: linear-gradient(transparent, transparent 70%, var(--bs-white));
 
     content: '';
   }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { StoreService } from '@core/store/store.service';
-import { APIResponse, Movie } from '@core/api.model';
+import { APIMoviesResponse, Movie } from '@core/api.model';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ import { APIResponse, Movie } from '@core/api.model';
 })
 export class HomeComponent implements OnInit {
   favoriteMovies$!: Observable<Movie[]>;
-  popularMovies$!: Observable<APIResponse>;
+  popularMovies$!: Observable<APIMoviesResponse>;
 
   constructor(private store: StoreService) {}
 

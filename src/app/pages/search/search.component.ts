@@ -4,7 +4,7 @@ import { Subject, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { StoreService } from '@core/store/store.service';
-import { APIResponse } from '@core/api.model';
+import { APIMoviesResponse } from '@core/api.model';
 
 @Component({
   selector: 'app-search',
@@ -13,7 +13,7 @@ import { APIResponse } from '@core/api.model';
 })
 export class SearchComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void>;
-  movies$!: Observable<APIResponse>;
+  movies$!: Observable<APIMoviesResponse>;
   query!: string;
 
   constructor(private route: ActivatedRoute, private store: StoreService) {
