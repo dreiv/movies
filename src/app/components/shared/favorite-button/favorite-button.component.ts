@@ -16,7 +16,7 @@ export class FavoriteButtonComponent implements OnInit {
   @Input() private isFavorite?: boolean;
   isFavorite$!: Observable<boolean>;
 
-  constructor(private store: StoreService) {}
+  constructor(private readonly store: StoreService) {}
 
   ngOnInit(): void {
     this.isFavorite$ = this.isFavorite

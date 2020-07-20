@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   favoriteMovies$!: Observable<Movie[]>;
   popularMovies$!: Observable<APIMoviesResponse>;
 
-  constructor(private store: StoreService) {}
+  constructor(private readonly store: StoreService) {}
 
   ngOnInit(): void {
     this.favoriteMovies$ = this.store.favoriteMovies$;

@@ -5,8 +5,7 @@ const hasSupport = 'IntersectionObserver' in window;
 export function inView(
   element: Element,
   options: IntersectionObserverInit = {
-    root: null,
-    threshold: 0
+    root: null
   }
 ): Observable<boolean> {
   return new Observable((subscriber) => {

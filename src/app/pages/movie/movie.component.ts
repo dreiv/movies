@@ -16,7 +16,10 @@ export class MovieComponent implements OnInit {
   movie$!: Observable<MovieDetail>;
   favMovie!: Movie;
 
-  constructor(private store: StoreService, private route: ActivatedRoute) {}
+  constructor(
+    private readonly store: StoreService,
+    private readonly route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.movie$ = this.route.params.pipe(

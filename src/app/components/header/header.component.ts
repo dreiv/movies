@@ -12,7 +12,7 @@ export class HeaderComponent {
     searchInput: new FormControl()
   });
 
-  constructor(private router: Router) {}
+  constructor(private readonly router: Router) {}
 
   submit(): void {
     const query = this.search.get('searchInput')?.value;

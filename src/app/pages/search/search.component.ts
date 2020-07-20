@@ -16,7 +16,10 @@ export class SearchComponent implements OnInit, OnDestroy {
   movies$!: Observable<APIMoviesResponse>;
   query!: string;
 
-  constructor(private route: ActivatedRoute, private store: StoreService) {
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly store: StoreService
+  ) {
     this.unsubscribe$ = new Subject();
   }
 

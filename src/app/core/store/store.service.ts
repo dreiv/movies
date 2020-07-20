@@ -2,7 +2,7 @@ import { Params } from '@angular/router';
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, BehaviorSubject, fromEvent, Subject } from 'rxjs';
-import { map, shareReplay, takeUntil } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 
 import { Adapter } from '@core/adapter/adapter';
 import { MovieDetailAdapterService } from '@core/adapter/movie-detail-adapter/movie-detail-adapter.service';
@@ -36,9 +36,7 @@ export class StoreService implements OnDestroy {
       storage.getItem(FAVORITES) || ([] as Movie[])
     );
     this.favoriteMovies$ = this.favoriteMovies.asObservable();
-    this.popularMovies$ = this.get('movie/popular', this.adapter).pipe(
-      shareReplay(1)
-    );
+    this.popularMovies$ = this.get('movie/popular', this.adapter);
 
     this.unloadStrategy();
   }
