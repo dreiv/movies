@@ -34,7 +34,7 @@
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles", "./node_modules"]
             },
-            "scripts": ["./node_modules/bootstrap/dist/js/bootstrap.min.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -99,7 +99,7 @@
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles", "./node_modules"]
             },
-            "scripts": ["./node_modules/bootstrap/dist/js/bootstrap.min.js"]
+            "scripts": []
           }
         },
         "lint": {
