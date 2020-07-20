@@ -12,16 +12,9 @@ import { HomeComponent } from '@pages/home/home.component';
 import { MovieComponent } from '@pages/movie/movie.component';
 import { SharedModule } from '@components/shared/shared.module';
 import { SearchComponent } from '@pages/search/search.component';
-import { ToMoviePipe } from './pages/movie/to-movie.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    MovieComponent,
-    SearchComponent,
-    ToMoviePipe
-  ],
+  declarations: [AppComponent, HomeComponent, MovieComponent, SearchComponent],
   imports: [
     ComponentsModule,
     BrowserModule,

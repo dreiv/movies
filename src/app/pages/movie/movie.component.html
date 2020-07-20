@@ -1,5 +1,5 @@
 <ng-container *ngIf="movie$.data | async as movie">
-  <div class="sixteen-nine">
+  <div class="sixteen-nine" @card>
     <div class="content rounded">
       <img
         src="https://image.tmdb.org/t/p/w1280{{ movie.backdropPath }}"
@@ -30,7 +30,7 @@
     {{ movie.overview }}
   </p>
 
-  <app-favorite-button [movie]="movie | toMovie"></app-favorite-button>
+  <app-favorite-button [movie]="favMovie"></app-favorite-button>
 </ng-container>
 
 <section [ngSwitch]="movie$.status | async">
