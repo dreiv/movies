@@ -1,22 +1,23 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Routes, RouterModule, NoPreloading } from '@angular/router';
+
+import { HomeComponent } from '@pages/home/home.component';
+import { MovieComponent } from '@pages/movie/movie.component';
+import { SearchComponent } from '@pages/search/search.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    loadChildren: () =>
-      import('./pages/home/home.module').then((m) => m.HomeModule)
+    component: HomeComponent
+  },
+  {
+    path: 'movie/:id',
+    component: MovieComponent
   },
   {
     path: 'search',
-    loadChildren: () =>
-      import('./pages/search/search.module').then((m) => m.SearchModule)
-  },
-  {
-    path: 'movie',
-    loadChildren: () =>
-      import('./pages/movie/movie.module').then((m) => m.MovieModule)
+    component: SearchComponent
   },
   {
     path: '**',
@@ -26,9 +27,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: NoPreloading })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
