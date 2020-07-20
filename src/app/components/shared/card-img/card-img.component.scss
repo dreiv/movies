@@ -1,0 +1,10 @@
+@import 'abstracts/mixins';
+
+:host {
+  @include aspect-ratio(2, 3);
+  display: block;
+
+  > .content {
+    background-color: var(--bs-gray);
+  }
+}

@@ -1,0 +1,7 @@
+.card {
+  transition: border-color var(--medium);
+
+  &:hover {
+    border-color: var(--bs-gray);
+  }
+}

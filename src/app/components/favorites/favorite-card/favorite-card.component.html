@@ -1,13 +1,6 @@
 <a class="card text-dark" routerLink="/movie/{{ movie.id }}">
-  <div class="two-three">
-    <div class="content rounded-top">
-      <img
-        src="https://image.tmdb.org/t/p/w342{{ movie.posterPath }}"
-        class="card-img-top"
-        alt="{{ movie.title }}"
-      />
-    </div>
-  </div>
+  <app-card-img [movie]="movie" rounded="rounded-top"></app-card-img>
+
   <div class="card-body">
     <h5 class="card-title">{{ movie.title }}</h5>
     <app-favorite-button

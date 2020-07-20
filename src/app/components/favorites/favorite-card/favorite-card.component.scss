@@ -3,24 +3,10 @@
 .card {
   width: 15rem;
   text-decoration: none;
-  color: reset;
-
-  transition: border-color 0.3s;
-
-  &:hover {
-    border-color: #343a40;
-  }
 }
 
 .card-title {
   @include trim;
+
   flex: 1;
-}
-
-.two-three {
-  @include aspect-ratio(2, 3);
-
-  > .content {
-    background-color: var(--bs-gray);
-  }
 }

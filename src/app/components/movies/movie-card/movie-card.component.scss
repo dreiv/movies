@@ -1,14 +1,11 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins/breakpoints';
 @import 'abstracts/mixins';
 
 .card {
   text-decoration: none;
   color: reset;
-
-  transition: border-color 0.3s;
-
-  &:hover {
-    border-color: #343a40;
-  }
 }
 
 .img-wrapper {
@@ -19,12 +16,11 @@
   @include flex-column;
   height: 100%;
 
-  // TODO: import breakpoint from bootstrap
-  @media (min-width: 992px) {
+  @include media-breakpoint-up(lg) {
     max-height: 20rem;
   }
 
-  @media (min-width: 1200px) {
+  @include media-breakpoint-up(xl) {
     max-height: 24rem;
   }
 
@@ -33,15 +29,7 @@
     overflow: auto;
   }
 
-  > .favorite-btn {
+  > app-favorite-button {
     align-self: flex-end;
-  }
-}
-
-.two-three {
-  @include aspect-ratio(2, 3);
-
-  > .content {
-    background-color: var(--bs-gray);
   }
 }

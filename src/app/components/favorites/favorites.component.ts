@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { Movie } from '@core/api.model';
 
@@ -7,12 +7,8 @@ import { Movie } from '@core/api.model';
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.scss']
 })
-export class FavoritesComponent implements OnInit {
+export class FavoritesComponent {
   @Input() movies!: Movie[];
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   trackByFn(index: number, item: Movie): number {
     return item.id;

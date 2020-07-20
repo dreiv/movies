@@ -1,15 +1,7 @@
 <a class="card h-100 text-dark" routerLink="/movie/{{ movie.id }}">
   <div class="row g-0">
     <div class="col-md-5 img-wrapper">
-      <div class="two-three">
-        <div class="content rounded">
-          <img
-            lazySrc="https://image.tmdb.org/t/p/w342{{ movie.posterPath }}"
-            class="card-img rounded"
-            alt="{{ movie.title }}"
-          />
-        </div>
-      </div>
+      <app-card-img [movie]="movie" rounded="rounded"></app-card-img>
     </div>
 
     <div class="col-md-7">
