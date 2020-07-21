@@ -6,7 +6,10 @@
 
     <div class="col-md-7">
       <div class="card-body">
-        <h4 class="card-title">{{ movie.title }}</h4>
+        <h4 class="card-title">
+          <span class="mr-2">{{ movie.title }}</span>
+          <span class="badge">{{ movie.vote }}</span>
+        </h4>
         <p class="card-text description text-secondary">{{ movie.overview }}</p>
         <app-favorite-button [movie]="movie"></app-favorite-button>
       </div>
