@@ -1,4 +1,3 @@
-import { Pending, Status } from './../api.model';
 import { Params } from '@angular/router';
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -16,7 +15,13 @@ import { Adapter } from '@core/adapter/adapter';
 import { MovieDetailAdapterService } from '@core/adapter/movie-detail-adapter/movie-detail-adapter.service';
 import { MoviesAdapterService } from '@core/adapter/movies-adapter/movies-adapter.service';
 import { StorageService } from '../storage/storage.service';
-import { APIMoviesResponse, Movie, MovieDetail } from '../api.model';
+import {
+  Pending,
+  Status,
+  APIMoviesResponse,
+  Movie,
+  MovieDetail
+} from '../api.model';
 
 const FAVORITES = 'favorites';
 
