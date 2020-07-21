@@ -1,4 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -8,7 +13,8 @@ import { Movie } from '@core/api.model';
 @Component({
   selector: 'app-favorite-button',
   templateUrl: './favorite-button.component.html',
-  styleUrls: ['./favorite-button.component.scss']
+  styleUrls: ['./favorite-button.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FavoriteButtonComponent implements OnInit {
   @Input() movie!: Movie;

@@ -1,4 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Subject, of } from 'rxjs';
@@ -28,6 +33,7 @@ function toMovie(movieDetail: MovieDetail): Movie {
   selector: 'app-movie',
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fade]
 })
 export class MovieComponent implements OnInit, OnDestroy {
