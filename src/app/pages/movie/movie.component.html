@@ -14,8 +14,8 @@
     </h1>
 
     <div class="mb-2">
-      <span class="badge">{{ movie.releaseDate }}</span>
-      <span class="ml-2 badge">{{ movie.vote }}</span>
+      <span class="badge" title="Release Date">{{ movie.releaseDate }}</span>
+      <span class="ml-2 badge" title="Movie Rating">{{ movie.vote }}</span>
     </div>
     <h2 class="text-secondary">{{ movie.tagline }}</h2>
     <h5 class="text-secondary">{{ movie.genres }}</h5>
@@ -32,7 +32,9 @@
       {{ movie.overview }}
     </p>
 
-    <app-favorite-button [movie]="favMovie"></app-favorite-button>
+    <div class="text-right">
+      <app-favorite-button [movie]="favMovie"></app-favorite-button>
+    </div>
   </div>
 </ng-container>
 
@@ -47,6 +49,8 @@
 </section>
 
 <hr />
-<h3>Similar Movies</h3>
+<ng-container *ngIf="similar$">
+  <h3>Similar Movies</h3>
 
-<app-movies *ngIf="similar$" [movies$]="similar$"></app-movies>
+  <app-movies [movies$]="similar$"></app-movies>
+</ng-container>

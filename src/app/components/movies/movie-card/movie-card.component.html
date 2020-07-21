@@ -1,4 +1,9 @@
-<a class="card h-100 text-dark" routerLink="/movie/{{ movie.id }}" @fade>
+<a
+  (click)="scrollTop()"
+  class="card h-100 text-dark"
+  routerLink="/movie/{{ movie.id }}"
+  @fade
+>
   <div class="row g-0">
     <div class="col-md-5 img-wrapper">
       <app-card-img [movie]="movie" rounded="rounded"></app-card-img>
@@ -8,7 +13,7 @@
       <div class="card-body">
         <h4 class="card-title">
           <span class="mr-2">{{ movie.title }}</span>
-          <span class="badge">{{ movie.vote }}</span>
+          <span class="badge" title="Movie Rating">{{ movie.vote }}</span>
         </h4>
         <p class="card-text description text-secondary">{{ movie.overview }}</p>
         <app-favorite-button [movie]="movie"></app-favorite-button>

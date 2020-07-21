@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { Movie } from '@core/api.model';
+import { scrollTop } from '@core/scroll-top';
 import { fade } from '@components/shared/animations/fade.animation';
 
 @Component({
@@ -11,4 +12,6 @@ import { fade } from '@components/shared/animations/fade.animation';
 })
 export class MovieCardComponent {
   @Input() movie!: Movie;
+
+  scrollTop = scrollTop;
 }
