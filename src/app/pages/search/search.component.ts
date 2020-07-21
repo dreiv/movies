@@ -29,7 +29,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       .subscribe((params: Params) => {
         this.query = params.q;
 
-        this.movies$ = this.store.searchMovies$(this.query);
+        this.movies$ = this.store.searchMovies$(this.query, params.page);
       });
   }
 

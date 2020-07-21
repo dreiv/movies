@@ -30,7 +30,6 @@ export class StoreService implements OnDestroy {
   private unsubscribe$: Subject<void>;
 
   favoriteMovies$: Observable<Movie[]>;
-  popularMovies$: Pending<APIMoviesResponse>;
 
   constructor(
     private readonly http: HttpClient,
@@ -44,7 +43,6 @@ export class StoreService implements OnDestroy {
       storage.getItem(FAVORITES) || ([] as Movie[])
     );
     this.favoriteMovies$ = this.favoriteMovies.asObservable();
-    this.popularMovies$ = this.get('movie/popular', this.adapter);
 
     this.unloadStrategy();
   }
@@ -53,8 +51,14 @@ export class StoreService implements OnDestroy {
     this.unsubscribe$.next();
   }
 
-  searchMovies$(query: string): Pending<APIMoviesResponse> {
-    const params: Params[] = [{ query }];
+  popularMovies$(page = 1): Pending<APIMoviesResponse> {
+    const params: Params[] = [{ page }];
+
+    return this.get('movie/popular', this.adapter, params);
+  }
+
+  searchMovies$(query: string, page = 1): Pending<APIMoviesResponse> {
+    const params: Params[] = [{ query, page }];
 
     return this.get('search/movie', this.adapter, params);
   }

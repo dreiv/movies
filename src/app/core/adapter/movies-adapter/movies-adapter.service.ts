@@ -21,8 +21,8 @@ export class MoviesAdapterService implements Adapter<APIMoviesResponse> {
     return new APIMoviesResponse(
       item.results.map(toMovie),
       item.page,
-      item.totalResults,
-      item.totalPages
+      item.total_results,
+      item.total_pages
     );
   }
 }

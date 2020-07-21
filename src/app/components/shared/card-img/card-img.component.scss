@@ -11,4 +11,6 @@
 
 img {
   @include absolute;
+
+  color: var(--bs-white);
 }

@@ -1,0 +1,24 @@
+<div class="row row-cols-2 g4 my-4">
+  <div class="col text-right">
+    <a
+      class="btn btn-outline-dark"
+      routerLink="."
+      queryParamsHandling="merge"
+      [queryParams]="{ page: movies.page - 1 }"
+      *ngIf="movies.page > 1"
+    >
+      BACK
+    </a>
+  </div>
+  <div class="col">
+    <a
+      class="btn btn-outline-dark"
+      routerLink="."
+      queryParamsHandling="merge"
+      [queryParams]="{ page: movies.page + 1 }"
+      *ngIf="movies.page < movies.totalPages"
+    >
+      NEXT
+    </a>
+  </div>
+</div>
