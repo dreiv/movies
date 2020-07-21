@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { MovieDetail } from '@core/api.model';
+import { MoviesAdapterService } from '@core/adapter/movies-adapter/movies-adapter.service';
 import { Adapter } from './../adapter';
 
 function getGenre(item: any[]): string {
@@ -33,27 +34,26 @@ function getStars(item: any): string {
   return stars;
 }
 
-function toMovieDetail(item: any): MovieDetail {
-  return new MovieDetail(
-    item.id,
-    item.vote_average,
-    item.title,
-    item.tagline,
-    getRuntime(item.runtime),
-    item.release_date.split('-')[0],
-    getGenre(item.genres),
-    getStars(item.credits),
-    item.backdrop_path,
-    item.overview,
-    item.poster_path
-  );
-}
-
 @Injectable({
   providedIn: 'root'
 })
 export class MovieDetailAdapterService implements Adapter<MovieDetail> {
+  constructor(private readonly movieAdapter: MoviesAdapterService) {}
+
   adapt(item: any): MovieDetail {
-    return toMovieDetail(item);
+    return new MovieDetail(
+      item.id,
+      item.vote_average,
+      item.title,
+      item.tagline,
+      getRuntime(item.runtime),
+      item.release_date.split('-')[0],
+      getGenre(item.genres),
+      getStars(item.credits),
+      item.backdrop_path,
+      item.overview,
+      item.poster_path,
+      this.movieAdapter.adapt(item.similar)
+    );
   }
 }

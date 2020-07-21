@@ -64,9 +64,15 @@ export class StoreService implements OnDestroy {
   }
 
   getMovie$(id: number): Pending<MovieDetail> {
-    const params: Params[] = [{ append_to_response: 'credits' }];
+    const params: Params[] = [{ append_to_response: 'credits,similar' }];
 
     return this.get(`movie/${id}`, this.detailadapter, params);
+  }
+
+  getSimilarMovies$(id: number, page = 1): Pending<APIMoviesResponse> {
+    const params: Params[] = [{ page, append_to_response: 'credits' }];
+
+    return this.get(`movie/${id}/similar`, this.adapter, params);
   }
 
   toggleFavorite(movie: Movie, isFavorite: boolean): void {

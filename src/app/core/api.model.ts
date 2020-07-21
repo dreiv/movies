@@ -22,7 +22,8 @@ export class MovieDetail {
     public stars: string,
     public backdropPath: string,
     public overview: string,
-    public posterPath: string
+    public posterPath: string,
+    public simliar: APIMoviesResponse
   ) {}
 }
 

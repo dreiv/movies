@@ -21,6 +21,7 @@
     <h5 class="text-secondary">{{ movie.genres }}</h5>
     <h5 class="text-secondary">{{ movie.runtime }}</h5>
 
+    <hr />
     <h3>Stars</h3>
     <p class="lead">
       {{ movie.stars }}
@@ -44,3 +45,8 @@
     >There was an error loading the movie.</span
   >
 </section>
+
+<hr />
+<h3>Similar Movies</h3>
+
+<app-movies *ngIf="similar$" [movies$]="similar$"></app-movies>

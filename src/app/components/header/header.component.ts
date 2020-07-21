@@ -15,7 +15,7 @@ export class HeaderComponent {
   constructor(private readonly router: Router) {}
 
   submit(): void {
-    const query = this.search.get('searchInput')?.value;
+    const query = this.search.get('searchInput')?.value.trim();
     if (!query) {
       return;
     }
