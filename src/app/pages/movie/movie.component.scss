@@ -10,7 +10,7 @@
 
   &::after {
     @include absolute;
-    background: linear-gradient(transparent, transparent 70%, var(--bs-white));
+    background: linear-gradient(transparent, transparent 80%, var(--bs-white));
 
     content: '';
   }
@@ -23,4 +23,8 @@ h1 {
 .badge {
   font-size: 1.25rem;
   background-color: var(--bs-gray);
+}
+
+.main-content {
+  max-width: 58rem;
 }
