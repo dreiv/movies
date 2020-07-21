@@ -48,9 +48,6 @@
   >
 </section>
 
-<hr />
-<ng-container *ngIf="similar$">
+<app-movies *ngIf="similar$" [movies$]="similar$">
   <h3>Similar Movies</h3>
-
-  <app-movies [movies$]="similar$"></app-movies>
-</ng-container>
+</app-movies>

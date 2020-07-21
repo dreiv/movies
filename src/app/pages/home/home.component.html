@@ -3,5 +3,6 @@
   <app-favorites [movies]="favoriteMovies"></app-favorites>
 </ng-container>
 
-<h2 class="my-2">Popular movies</h2>
-<app-movies [movies$]="popularMovies$"></app-movies>
+<app-movies [movies$]="popularMovies$">
+  <h2 class="my-2">Popular movies</h2>
+</app-movies>

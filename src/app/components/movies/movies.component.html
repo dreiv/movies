@@ -1,4 +1,6 @@
 <ng-container *ngIf="movies$.data | async as movies">
+  <ng-content *ngIf="movies.results.length"></ng-content>
+
   <div class="row row-cols-1 row-cols-lg-2 g-4">
     <div class="col" *ngFor="let movie of movies.results; trackBy: trackByFn">
       <app-movie-card [movie]="movie"></app-movie-card>
