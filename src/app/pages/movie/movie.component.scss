@@ -2,7 +2,6 @@
 
 .sixteen-nine {
   @include aspect-ratio(16, 9);
-  z-index: -1;
 
   > .content {
     background-color: var(--bs-gray);
@@ -17,7 +16,8 @@
 }
 
 h1 {
-  margin-top: -2rem;
+  position: relative;
+  margin-top: -3rem;
 }
 
 .badge {
