@@ -6,7 +6,7 @@ import { takeUntil, tap } from 'rxjs/operators';
 
 import { MovieDetail, Movie, Status, Pending } from '@core/api.model';
 import { StoreService } from '@core/store/store.service';
-import { card } from '@components/shared/animations/card.animation';
+import { fade } from '@components/shared/animations/fade.animation';
 
 function toMovie(movieDetail: MovieDetail): Movie {
   return new Movie(
@@ -22,7 +22,7 @@ function toMovie(movieDetail: MovieDetail): Movie {
   selector: 'app-movie',
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.scss'],
-  animations: [card]
+  animations: [fade]
 })
 export class MovieComponent implements OnInit, OnDestroy {
   readonly Status = Status;
